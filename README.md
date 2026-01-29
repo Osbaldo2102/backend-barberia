@@ -19,17 +19,19 @@ El sistema está enfocado en la gestión de citas mediante una API REST desarrol
 🧪 MVP – Producto Mínimo Viable
 
 ✔ Funcionalidades Incluidas
-
 CRUD de citas
 Backend funcional en local
 API REST con Express
 Pruebas con Postman
-❌ Funcionalidades Fuera del MVP
 
+❌ Funcionalidades Fuera del MVP
 Autenticación de usuarios
 Base de datos
 Frontend
 Roles y permisos
+
+---
+
 🧱 Entidad Principal
 
 📌 Cita
@@ -41,6 +43,8 @@ Roles y permisos
   "hora": "15:00",
   "servicio": "Corte de cabello"
 }
+---
+
 🚀 Tecnologías Utilizadas
 
 Node.js
