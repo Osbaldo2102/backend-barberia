@@ -47,3 +47,47 @@ app.post('/api/citas', (req, res) => {
 
   res.status(201).json(nuevaCita);
 });
+
+//Actualizar una cita existente
+app.put('/api/citas/:id', (req, res) => {
+  const citaId = parseInt(req.params.id);
+  const { cliente, fecha, hora, servicio } = req.body;
+
+  const cita = citas.find(c => c.id === citaId);
+
+  if (!cita) {
+    return res.status(404).json({
+      message: 'Cita no encontrada'
+    });
+  }
+
+  if (!cliente || !fecha || !hora || !servicio) {
+    return res.status(400).json({
+      message: 'Todos los campos son obligatorios'
+    });
+  }
+
+  cita.cliente = cliente;
+  cita.fecha = fecha;
+  cita.hora = hora;
+  cita.servicio = servicio;
+
+  res.json({
+    message: 'Cita actualizada correctamente',
+    cita
+  });
+});
+
+app.delete('/api/citas/:id', (req, res) => {
+  const citaId = parseInt(req.params.id);
+
+  const index = citas.findIndex(c => c.id === citaId);
+
+  if (index === -1) {
+    return res.status(404).json({ message: "Cita no encontrada"});
+  }
+
+  citas.splice(index, 1);
+
+  res.json({ message: "Cita eliminada correctamente"});
+});
